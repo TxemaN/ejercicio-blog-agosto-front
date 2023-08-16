@@ -1,0 +1,21 @@
+<%- include('templates/header.ejs') %>
+
+
+<main>
+    <h1><%= titulo %></h1>
+    <div class="flexContainer">
+        
+            <div>
+                <h3 class="textCenter"><%= usuario.email %></h3>
+                <p class="textCenter"><%= usuario.nombre %></p>
+                <p class="textCenter"><%= usuario.uid %></p>
+                
+                
+                
+                <a href="../editor/crear/<%= usuario.uid  %>" class="btnTabla">Crear Noticia</a>
+                <a href="../editor/creadapor/<%= usuario.uid  %>" class="btnTabla">Mis noticias</a>
+                
+            </div>
+        
+    </div>
+</main>

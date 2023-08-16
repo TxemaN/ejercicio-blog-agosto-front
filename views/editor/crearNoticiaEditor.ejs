@@ -1,0 +1,17 @@
+<%- include('../templates/header.ejs') %>
+
+<form  method="post" action="/editor/creada/" >
+
+    <p>Añade una noticia</p>
+    <label for="titulo">Título:</label>
+    <input type="text" placeholder="título" name="titulo" id="tituloId">
+    <label for="creador">Creador:</label>
+    <input type="text" placeholder="creador" name="creador" id="creadorId" value = "<%= creador  %>" readonly>
+    <label for="imagen">Imagen:</label>
+    <input type="file" name="imagen">
+    <label for="noticia">Cuerpo noticia:</label>
+    <textarea name="noticia" id="noticiaId" rows="4" cols="50">Descripción </textarea>
+    
+    
+    <button type="submit"  class="btn">Añadir noticia</button>
+</form>

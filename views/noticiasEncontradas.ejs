@@ -1,0 +1,21 @@
+<%- include('templates/header.ejs') %>
+
+
+<main>
+    <a href="/accedercuenta/" class="btnTabla">Login</a>
+    <a href="/crearcuenta/" class="btnTabla">Registrarse</a>
+    
+    <h1><%= titulo %></h1>
+    <a href="editor/creadapor/<%= noticias._id %>" class="btnTabla">Mis noticias</a>
+    <div class="flexContainer">
+        <% noticias.forEach(element => { %>
+            <article>
+                <h3 class="textCenter"><%= element.titulo %></h3>
+                <p class="textCenter"><%= element.noticia %></p>
+               
+                
+              
+            </article>
+        <% }) %>
+    </div>
+</main>

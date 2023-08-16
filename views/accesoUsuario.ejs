@@ -1,0 +1,13 @@
+<%- include ('templates/header.ejs') %>
+<main>
+    
+    <form id="tieneCuenta" action="/cuentalogeada/" method="post">
+        <p>Inicia sesion.</p>
+        <label for="email">E-mail:</label>
+        <input type="email" name="email" placeholder="usuario@dominio.com" required />
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" placeholder="XXXXXX" required />
+
+        <input type="submit" id="iniciaSesion" class="btn" value="Iniciar sesion"></input>
+    </form>
+</main>

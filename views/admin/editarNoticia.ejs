@@ -1,0 +1,17 @@
+<%- include('../templates/header.ejs') %>
+
+<main>
+
+    <h2>EDITAR NOTICIA</h2>
+    <form id="formulario"  action="/admin/editada/<%= noticias._id %>" method="post"  >
+
+        <p>Editar una noticia</p>
+        <h2><%= noticias._id %></h2>
+        <label for="titulo">Título:</label>
+        
+        <input type="text"  value="<%= noticias.titulo %>" name="titulo" >
+        <input type="text"  value="<%= noticias.noticia %>" name="noticia" >
+      
+        <button type="submit" id="editaPeli" _method="put" class="btn" >Editar película</button>
+    </form>
+</main>
