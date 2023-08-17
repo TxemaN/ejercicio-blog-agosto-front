@@ -134,7 +134,7 @@ const usuarioLogeado = async (req, res) => {
         
     }
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/auth/login`, { method: "post", body: JSON.stringify(body),
+        const resp = await fetch("http://localhost:3000/api/v1/auth/login/", { method: "post", body: JSON.stringify(body),
         //EN LA DOCUMENTACION DE LA CLASE DE FETCH
         headers: {
             'Content-Type': 'application/json'

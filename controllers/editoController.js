@@ -80,7 +80,7 @@ const noticiaCreadaEditor = async (req, res) => {
         creador
     }
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/`, { method: "post", body: JSON.stringify(body),
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`, { method: "post", body: JSON.stringify(body),
         //EN LA DOCUMENTACION DE LA CLASE DE FETCH
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ const formatoEditar = async (req, res) => {
         if (resp.ok) {
             const noticias = await resp.json();
 
-            res.render("admin/editarNoticia.ejs", {
+            res.render("editor/editarNoticia.ejs", {
                 titulo: "sección de noticias",
                 noticias: noticias.data
             })
