@@ -11,7 +11,7 @@ router.get("/", getNoticia)
 
 router.get("/buscar/", buscaNoticia)
 //ENCONTRAR NOTICIA
-router.get("/buscada/", encontrarNoticia)
+router.get("/buscada/:titulo", encontrarNoticia)
 
 //CREAR CUENTA
 router.get("/crearcuenta/", crearCuenta)

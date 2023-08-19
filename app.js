@@ -3,7 +3,7 @@ require("dotenv").config
 
 const app = express();
 
-
+const path = require('path');
 const multer  = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
@@ -44,11 +44,12 @@ app.use(express.static(__dirname + '/public'));
 // CONFIGURAR INGENIERIA DE PLANTILLAS
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, 'views')); // set the views directory
 
 // LLAMAR RUTAS FRONT
 app.use("/", require("./routes/userRoutes"));
 app.use("/editor", require("./routes/editorRoutes"));
-app.use("/admin", require("./routes/adminRoutes"));
+app.use("/adminillo", require("./routes/adminRoutes"));
 
 
 

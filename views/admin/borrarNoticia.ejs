@@ -1,0 +1,20 @@
+<%- include('../templates/header.ejs') %>
+
+<main>
+
+    <h2>BORRAR NOTICIA</h2>
+    <article>
+        <h3><%= noticias.titulo %></h3>
+        <p class=""><%= noticias.noticia %></p>
+        <div>
+            <figure>
+               
+                <img src="<%= noticias.imagen%>" alt="">
+            </figure>
+        </div>
+        
+      
+    </article>
+    <h2>¿SEGUROQ UE QUIERES BORRAR ESTA NOTICIA?</h2>
+    <a href="/adminillo/borrada/<%= noticias._id %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Borrar</a>
+</main>

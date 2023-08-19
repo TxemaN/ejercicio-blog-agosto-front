@@ -27,15 +27,21 @@ const panelUsuario = async (req, res) => {
 //NOTICIAS POR CREADOR
 
 const getNoticiaEditor = async (req, res) => {
-    const uid=await req.params.id;
+    const uid = await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/creadapor/${uid}`);
         if (resp.ok) {
             const noticias = await resp.json();
+            const idUsuario = uid
+
 
             res.render("editor/noticiasEncontradasEditor.ejs", {
                 titulo: "sección de noticias",
-                noticias: noticias.data
+                noticias: noticias.data,
+
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
             })
 
         }
@@ -52,17 +58,19 @@ const getNoticiaEditor = async (req, res) => {
 
 //CREAR NOTCIA
 const crearNoticiaEditor = async (req, res) => {
-    const creador= req.params.id;
+    const uid = await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
     try {
         const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth/");
         if (resp.ok) {
-           
+            const idUsuario = uid
 
             res.render("editor/crearNoticiaEditor.ejs", {
-                
-             creador:creador
-            })
 
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+            
         }
     } catch (error) {
         console.log(error);
@@ -71,22 +79,25 @@ const crearNoticiaEditor = async (req, res) => {
 }
 
 const noticiaCreadaEditor = async (req, res) => {
-    
-    const { titulo, noticia, imagen,creador } = req.body
+
+    const { titulo, noticia, imagen, creador, nombrecreador } = req.body
     const body = {
         titulo,
         noticia,
         imagen,
-        creador
+        creador,
+        nombrecreador
     }
     try {
-        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`, { method: "post", body: JSON.stringify(body),
-        //EN LA DOCUMENTACION DE LA CLASE DE FETCH
-        headers: {
-            'Content-Type': 'application/json'
-        } });
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`, {
+            method: "post", body: JSON.stringify(body),
+            //EN LA DOCUMENTACION DE LA CLASE DE FETCH
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         if (resp.ok) {
-            
+
             const noticias = await resp.json();
 
             res.send("noticia creada")
@@ -102,15 +113,18 @@ const noticiaCreadaEditor = async (req, res) => {
 //EDITAR NOTICIAS
 
 const formatoEditar = async (req, res) => {
-   
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`);
         if (resp.ok) {
             const noticias = await resp.json();
-
+            const idUsuario = uid
             res.render("editor/editarNoticia.ejs", {
                 titulo: "sección de noticias",
-                noticias: noticias.data
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
             })
 
         }
@@ -121,23 +135,49 @@ const formatoEditar = async (req, res) => {
 }
 
 const noticiaEditada = async (req, res) => {
-    
-    const { titulo, noticia } = req.body
+
+    const { titulo, noticia, imagen, uid, nombrecreador} = req.body
     const body = {
         titulo,
-        noticia
+        noticia,
+        imagen,
+        uid,
+        nombrecreador
     }
+    
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.id}`, { method: "put", body: JSON.stringify(body),
-        
-        headers: {
-            'Content-Type': 'application/json'
-        } });
+        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.id}`, {
+            method: "put", body: JSON.stringify(body),
+
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
         if (resp.ok) {
-            let noticias = await resp.json();
-            
-            console.log(noticias)
-            res.send("noticia modificada")
+            const noticias = await resp.json();
+            res.redirect(`/editor/creadapor/${noticias.noticia.creador}/${noticias.noticia.nombrecreador}`)
+console.log(noticias)
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+const preguntaBorrar = async (req, res) => {
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.titulo}`);
+        if (resp.ok) {
+            const noticias = await resp.json();
+            const idUsuario = uid
+            res.render("editor/borrarNoticia.ejs", {
+                titulo: "ELIMINAR NOTICIA",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
 
         }
     } catch (error) {
@@ -146,18 +186,101 @@ const noticiaEditada = async (req, res) => {
 
 }
 
+
 const borrarNoticia = async (req, res) => {
-    
+
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
 
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`, { method: "delete" });
         if (resp.ok) {
-            
+            const idUsuario = uid;
+            const usuario = nombreUsuario
 
-            res.send("noticia eliminada")
+
+
+            res.redirect(`/editor/creadapor/${idUsuario}/${usuario}`)
 
         }
     } catch (error) {
+        console.log(error);
+    }
+
+}
+const encontrarNoticia = async (req, res) => {
+    const uid = await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.titulo}`, { method: "get" });
+        if (resp.ok) {
+
+            const noticias = await resp.json();
+            const idUsuario = uid
+
+            res.render("editor/noticiaIndividual.ejs", {
+                titulo: "sección de noticias",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+
+            })
+
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+}
+
+const encontrarNoticiaAjena = async (req, res) => {
+    const uid = await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.titulo}`, { method: "get" });
+        if (resp.ok) {
+
+            const noticias = await resp.json();
+            const idUsuario = uid;
+
+            res.render("editor/noticiaIndividualAjena.ejs", {
+                titulo: "sección de noticias",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+}
+
+const getNoticia = async (req, res) => {
+    const uid = await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`http://localhost:3000/api/v1/blog/`);
+        if (uid) {
+
+            const noticias = await resp.json();
+            const idUsuario = uid;
+
+
+
+            res.render("editor/noticiasEncontradas.ejs", {
+                titulo: "sección de noticias",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+
+        }
+    }
+    catch (error) {
         console.log(error);
     }
 
@@ -165,13 +288,18 @@ const borrarNoticia = async (req, res) => {
 
 module.exports = {
 
-    
+
     crearNoticiaEditor,
     noticiaCreadaEditor,
     getNoticiaEditor,
     panelUsuario,
     formatoEditar,
     noticiaEditada,
-    borrarNoticia
-    
+    preguntaBorrar,
+    borrarNoticia,
+    encontrarNoticia,
+    encontrarNoticiaAjena,
+    getNoticia,
+
+
 }

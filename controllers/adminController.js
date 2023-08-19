@@ -1,13 +1,16 @@
 const getNoticia = async (req, res) => {
-
+    const uid=await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog/");
-        if (resp.ok) {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`);
+        if (uid == "64de290af975e85240b8dfda") {
             const noticias = await resp.json();
-
+            const idUsuario = uid;
             res.render("admin/noticiasEncontradasAdmin.ejs", {
-                titulo: "sección de noticias",
-                noticias: noticias.data
+                titulo: "LISTA DE NOTICIAS",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
             })
 
         }
@@ -148,16 +151,41 @@ const noticiaEditada = async (req, res) => {
     }
 
 }
+const preguntaBorrar = async (req, res) => {
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.titulo}`);
+        if (resp.ok) {
+            const noticias = await resp.json();
+            const idUsuario = uid
+            res.render("admin/borrarNoticia.ejs", {
+                titulo: "ELIMINAR NOTICIA",
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 const borrarNoticia = async (req, res) => {
     
-
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`, { method: "delete" });
         if (resp.ok) {
-            
+            const idUsuario = uid;
+            const usuario = nombreUsuario
 
-            res.send("noticia eliminada")
+
+
+            res.redirect(`/adminillo/todasnoticiasadmin/${idUsuario}/${usuario}`)
 
         }
     } catch (error) {
@@ -170,7 +198,7 @@ const borrarNoticia = async (req, res) => {
 const subirFoto = async (req, res) => {
 
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog");
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog", );
         if (resp.ok) {
             const noticias = await resp.json();
 
@@ -204,15 +232,42 @@ const fotoSubida = async (req, res) => {
 //OBTENER TODOS LOS EDITOORE
 
 const getEditores = async (req, res) => {
-
+    const uid=await req.params.id;
+    const nombreUsuario = req.params.nombrecreador;
     try {
         const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth");
-        if (resp.ok) {
+        if (uid == "64de290af975e85240b8dfda") {
             const editores = await resp.json();
-
+            const idUsuario = uid;
             res.render("admin/todosEditores.ejs", {
                 titulo: "lista de editores",
-                editores: editores.data
+               
+                editores: editores.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+//PREGUNTAR BORRAR EDITOR
+const preguntaBorrarEditor = async (req, res) => {
+    const uid=await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/auth/${req.params.id}`);
+        if (resp.ok) {
+            const editores = await resp.json();
+            const idUsuario = uid
+            res.render("admin/borrarEditor.ejs", {
+                titulo: "ELIMINAR EDITOR",
+                
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario,
+                editores:editores.data
             })
 
         }
@@ -225,14 +280,15 @@ const getEditores = async (req, res) => {
 //ELIMINAR EDITOR
 
 const borrarEditor = async (req, res) => {
-    
+    const uid=await req.params.uid;
+    const nombreUsuario = req.params.nombrecreador;
 
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/auth/${req.params.id}`, { method: "delete" });
         if (resp.ok) {
-            
-
-            res.send("editor eliminado")
+            const idUsuario = uid;
+            const usuario = nombreUsuario;
+            res.redirect(`/adminillo/todosloseditoresadmin/${idUsuario}/${usuario}`)
 
         }
     } catch (error) {
@@ -248,11 +304,13 @@ module.exports = {
     noticiaCreada,
     formatoEditar,
     noticiaEditada,
+    preguntaBorrar,
     borrarNoticia,
     subirFoto,
     fotoSubida,
     buscarNoticiaEditor,
     getNoticiaEditor,
     getEditores,
+    preguntaBorrarEditor,
     borrarEditor
 }

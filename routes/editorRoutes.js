@@ -2,25 +2,36 @@ const express = require("express");
 const router = express.Router();
 
 
-const {crearNoticiaEditor, noticiaCreadaEditor, getNoticiaEditor, panelUsuario, noticiaEditada, borrarNoticia, formatoEditar } = require("../controllers/editoController")
+const {crearNoticiaEditor, noticiaCreadaEditor, getNoticiaEditor, panelUsuario, noticiaEditada, preguntaBorrar, borrarNoticia, formatoEditar, encontrarNoticia, encontrarNoticiaAjena, getNoticia } = require("../controllers/editoController")
 
 //PANEL USUARIO
 router.get('/', panelUsuario)
-//VER NOTICIA DEL EDITOR
-router.get("/creadapor/:id", getNoticiaEditor)
+//TODAS LAS NOTICIAS
+
+router.get("/todasnoticias/:id/:nombrecreador", getNoticia)
+
+//NOTICIAS AJENAS
+
+router.get("/buscadaAjena/:titulo/:id/:nombrecreador", encontrarNoticiaAjena)
+
+//ENCONTRAR NOTICIA
+router.get("/buscada/:titulo/:id/:nombrecreador", encontrarNoticia)
+router.get("/creadapor/:id/:nombrecreador", getNoticiaEditor)
 
 //CREAR NOTICIA
-router.get("/crear/:id", crearNoticiaEditor)
+router.get("/crear/:id/:nombrecreador", crearNoticiaEditor)
 
 //CREADA NOTICIA
 router.post("/creada/", noticiaCreadaEditor)
 
 //Mostrar el formulario de 'editar' pelicula
-router.get('/editar/:id', formatoEditar)
+router.get('/editar/:id/:uid/:nombrecreador', formatoEditar)
 //lanza la pelicula ya editada
-router.post('/editada/:id', noticiaEditada)
+router.post('/editada/:id/', noticiaEditada)
 
+//PREGUNTA POR BORRAR  
+router.get('/borrar/:titulo/:uid/:nombrecreador', preguntaBorrar)
 //lanza la pelicula ya borrada
-router.get('/borrar/:id', borrarNoticia)
+router.get('/borrada/:id/:uid/:nombrecreador', borrarNoticia)
 
 module.exports = router

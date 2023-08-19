@@ -1,0 +1,25 @@
+<%- include('../templates/header.ejs') %>
+    <%- include('../templates/navLogeado.ejs') %>
+
+
+<main>
+   
+    <h1><%= titulo %></h1>
+   
+    <div class="flexContainer">
+       
+            <article>
+                <h3><%= noticias.titulo %></h3>
+                <p class=""><%= noticias.noticia %></p>
+                <div >
+                    <figure class="fotos">
+                       
+                        <img src="<%= noticias.imagen%>" alt="">
+                    </figure>
+                </div>
+                
+              
+            </article>
+      
+    </div>
+</main>

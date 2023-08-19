@@ -1,4 +1,5 @@
 <%- include('../templates/header.ejs') %>
+    <%- include('../templates/navAdmin.ejs') %>
 
 
 <main>
@@ -9,13 +10,17 @@
             <div>
                 <h3 class="textCenter"><%= element.email %></h3>
                 <p class="textCenter"><%= element.nombre %></p>
+                <p class="textCenter"><%= element.role %></p>
                 <p class="textCenter"><%= element._id %></p>
                 
                 
                 
-                <a href="editar/<%= element.email %>" class="btnTabla">Editar</a>
-                <a href="borrareditor/<%= element._id %>" class="btnTabla">Borrar</a>
-                
+             
+                <% if(element.role !="admin") { %>
+                    
+                    <a href="/adminillo/borrareditor/<%= element._id%>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Eliminar</a>
+                    <% } %>
+
             </div>
         <% }) %>
     </div>

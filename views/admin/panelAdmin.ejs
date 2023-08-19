@@ -1,0 +1,21 @@
+<%- include('../templates/header.ejs') %>
+
+
+<main>
+    <h1><%= titulo %></h1>
+    
+    <div class="flexContainer">
+        
+            <div>
+                <h3 class="textCenter"><%= usuario.email %></h3>
+                <p class="textCenter"><%= usuario.nombre %></p>
+                <p class="textCenter"><%= usuario.uid %></p>
+                <p class="textCenter"><%= usuario.role %></p>
+                
+                <a href="/adminillo/todasnoticiasadmin/<%= usuario.uid %>/<%= usuario.nombre %>" class="btnTabla">Lista niticias</a>
+                <a href="/adminillo/todosloseditoresadmin/<%= usuario.uid  %>/<%= usuario.nombre %>" class="btnTabla">Lista editores</a>
+                
+            </div>
+        
+    </div>
+</main>

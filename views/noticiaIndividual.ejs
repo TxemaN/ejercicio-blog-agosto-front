@@ -1,0 +1,27 @@
+<%- include('templates/header.ejs') %>
+
+
+<main>
+    <a href="/accedercuenta/" class="btnTabla">Login</a>
+    <a href="/crearcuenta/" class="btnTabla">Registrarse</a>
+    
+    
+    <h1><%= titulo %></h1>
+   
+    <div class="flexContainer">
+       
+            <article>
+                <h3><%= noticias.titulo %></h3>
+                <p class=""><%= noticias.noticia %></p>
+                <div>
+                    <figure>
+                       
+                        <img src="<%= noticias.imagen%>" alt="">
+                    </figure>
+                </div>
+                
+              
+            </article>
+      
+    </div>
+</main>

@@ -1,0 +1,27 @@
+<%- include('../templates/header.ejs') %>
+<%- include('../templates/navLogeado.ejs') %>
+
+
+
+    <main>
+       
+
+        <div>
+
+            <article>
+                <h2>  <%= noticias.titulo %></h2>
+                <p>  <%= noticias.noticia %></p>
+                <div>
+                    <figure>
+
+                        <img src="<%= noticias.imagen%>" alt="">
+                    </figure>
+                </div>
+
+
+            </article>
+            <a href="/editor/editar/<%= noticias.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>"
+                class="btnTabla">Editar</a>
+                <a href="/editor/borrar/<%= noticias.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" >Borrar</a>
+        </div>
+    </main>

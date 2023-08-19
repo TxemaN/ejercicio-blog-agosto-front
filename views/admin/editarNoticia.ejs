@@ -10,7 +10,9 @@
         <label for="titulo">Título:</label>
         
         <input type="text"  value="<%= noticias.titulo %>" name="titulo" >
-        <input type="text"  value="<%= noticias.noticia %>" name="noticia" >
+
+        <label for="noticia">Cuerpo noticia:</label>
+        <textarea  name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
       
         <button type="submit" id="editaPeli" _method="put" class="btn" >Editar noticia</button>
     </form>

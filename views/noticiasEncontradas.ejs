@@ -1,18 +1,23 @@
 <%- include('templates/header.ejs') %>
+<%- include('templates/nav.ejs') -%>
 
 
 <main>
-    <a href="/accedercuenta/" class="btnTabla">Login</a>
-    <a href="/crearcuenta/" class="btnTabla">Registrarse</a>
     
     
     <h1><%= titulo %></h1>
-    <a href="editor/creadapor/<%= noticias._id %>" class="btnTabla">Mis noticias</a>
+   
     <div class="flexContainer">
         <% noticias.forEach(element => { %>
             <article>
-                <h3 class="textCenter"><%= element.titulo %></h3>
-                <p class="textCenter"><%= element.noticia %></p>
+                <h3><a href="buscada/<%= element.titulo %>" class="btnTabla"><%= element.titulo %></a></h3>
+                <p class="parrafoCorto"><%= element.noticia %></p>
+                <div>
+                    <figure>
+                       
+                        <img src="<%= element.imagen%>" alt="">
+                    </figure>
+                </div>
                
                 
               

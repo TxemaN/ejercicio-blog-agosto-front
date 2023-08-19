@@ -1,0 +1,13 @@
+<%- include('../templates/header.ejs') %>
+<%- include('../templates/navAdmin.ejs') %>
+
+<main>
+    <h1>ELIMINAR EDITOR</h1>
+    <h3 ><%= editores.email %></h3>
+    <p ><%= editores.nombre %></p>
+    <p ><%= editores.role %></p>
+    <p ><%= editores._id %></p>
+    
+    <h2>¿SEGURO QUE QUIERES ELIMINAR ESTE EDITOR?</h2>
+    <a href="/adminillo/editorborrado/<%= editores._id %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Borrar</a>
+</main>

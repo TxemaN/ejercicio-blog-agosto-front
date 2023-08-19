@@ -1,24 +1,25 @@
 <%- include('../templates/header.ejs') %>
+<%- include('../templates/navLogeado.ejs') %>
 
 
 <main>
     <h1><%= titulo %></h1>
-
+    
     <div class="flexContainer">
         <% noticias.forEach(element => { %>
             <div>
-                <h3 class="textCenter"><%= element.titulo %></h3>
+                <h3><a href="/editor/buscada/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla"><%= element.titulo %></a></h3>
                 <p class="textCenter"><%= element.fecha %></p>
-                <p class="textCenter"><%= element.noticia %></p>
+                <p class="parrafoCorto"><%= element.noticia %></p>
                 <p class="textCenter"><%= element.imagen %></p>
-                <div>
+                <div class="fotos">
                     <figure>
                        
                         <img src="<%= element.imagen%>" alt="">
                     </figure>
                 </div>
-                <a href="../editar/<%= element.titulo %>" class="btnTabla">Editar</a>
-                <a href="../borrar/<%= element._id %>" class="btnTabla">Borrar</a>
+                <a href="/editor/editar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Editar</a>
+                <a href="/editor/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Borrar</a>
                 
             </div>
         <% }) %>

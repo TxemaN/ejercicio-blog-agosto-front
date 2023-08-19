@@ -1,17 +1,26 @@
 <%- include('../templates/header.ejs') %>
+    <%- include('../templates/navLogeado.ejs') %>
+        <main>
+            <h1>Añade una noticia</h1>
+           
+                <form method="post"  action="/editor/creada/">
 
-<form  method="post" action="/editor/creada/" >
+                    <div class="formulario">
+                    <label for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
+                    <label for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %>" readonly>
+                    <label for="titulo">Título:</label>
+                    <input type="text" placeholder="título" name="titulo" id="tituloId">
+                    <label for="noticia">Cuerpo noticia:</label>
+                    <textarea name="noticia" id="noticiaId" rows="4" cols="50">Descripción </textarea>
+                    <label for="imagen">URL Imagen:</label>
+                    <input type="text" name="imagen">
+                    
+                </div>
 
-    <p>Añade una noticia</p>
-    <label for="titulo">Título:</label>
-    <input type="text" placeholder="título" name="titulo" id="tituloId">
-    <label for="creador">Creador:</label>
-    <input type="text" placeholder="creador" name="creador" id="creadorId" value = "<%= creador  %>" readonly>
-    <label for="imagen">Imagen:</label>
-    <input type="file" name="imagen">
-    <label for="noticia">Cuerpo noticia:</label>
-    <textarea name="noticia" id="noticiaId" rows="4" cols="50">Descripción </textarea>
-    
-    
-    <button type="submit"  class="btn">Añadir noticia</button>
-</form>
+                    <button type="submit" class="btn">Añadir noticia</button>
+
+                </form>
+            
+        </main>

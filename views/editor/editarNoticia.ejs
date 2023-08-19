@@ -1,17 +1,26 @@
 <%- include('../templates/header.ejs') %>
+    <%- include('../templates/navLogeado.ejs') %>
+        <main>
 
-<main>
+            <h2>EDITAR NOTICIA</h2>
+            <form  action="/editor/editada/<%= noticias._id %>" method="post">
+                <div class="formulario">
+                    
+                   
+                    <label for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
+                    <label for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %> " readonly>
 
-    <h2>EDITAR NOTICIA</h2>
-    <form id="formulario"  action="/editor/editada/<%= noticias._id %>" method="post"  >
+                    <label for="titulo">Título:</label>
 
-        <p>Editar una noticia</p>
-        <h2><%= noticias._id %></h2>
-        <label for="titulo">Título:</label>
-        
-        <input type="text"  value="<%= noticias.titulo %>" name="titulo" >
-        <input type="text"  value="<%= noticias.noticia %>" name="noticia" >
-      
-        <button type="submit" id="editaPeli" _method="put" class="btn" >Editar noticia</button>
-    </form>
-</main>
+                    <input type="text" value="<%= noticias.titulo %>" name="titulo">
+                    <label for="noticia">Cuerpo noticia:</label>
+                    <textarea name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
+                    <label for="imagen">URL imagen:</label>
+                    <textarea name="imagen" id="imagenId" rows="4" cols="50"> <%= noticias.imagen %> </textarea>
+                    
+                </div>
+                <button type="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>
+            </form>
+        </main>
