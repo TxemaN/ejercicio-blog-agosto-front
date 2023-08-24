@@ -1,4 +1,4 @@
-const fetch = import('node-fetch');
+
 const getNoticia = async (req, res) => {
 
     try {
