@@ -3,6 +3,7 @@ const router = express.Router();
 
 
 
+
 const {getNoticia, getNoticiaEditor, buscaNoticia, encontrarNoticia, crearCuenta, cuentaCreada, hacerLogin, usuarioLogeado} = require("../controllers/userController")
 
 router.get("/", getNoticia)

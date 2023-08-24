@@ -2,7 +2,7 @@
 const getNoticia = async (req, res) => {
 
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog/");
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog/", { method: "get" });
         if (resp.ok) {
             const noticias = await resp.json();
 
