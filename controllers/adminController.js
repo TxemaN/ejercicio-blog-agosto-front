@@ -252,7 +252,7 @@ const fotoSubida = async (req, res) => {
 
 }
 
-//OBTENER TODOS LOS EDITOORE
+//OBTENER TODOS LOS EDITORES
 
 const getEditores = async (req, res) => {
     const uid = await req.params.id;
