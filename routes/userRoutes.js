@@ -3,11 +3,13 @@ const router = express.Router();
 
 
 
-const {getNoticia, buscaNoticia, encontrarNoticia, crearCuenta, cuentaCreada, hacerLogin, usuarioLogeado} = require("../controllers/userController")
+const {getNoticia, getNoticiaEditor, buscaNoticia, encontrarNoticia, crearCuenta, cuentaCreada, hacerLogin, usuarioLogeado} = require("../controllers/userController")
 
 router.get("/", getNoticia)
 
-//BUSCAR NOTICIA
+//NOTICIAS EDITOR ESPECIFICO
+router.get("/creadapor/:id/:nombrecreador", getNoticiaEditor)
+
 
 router.get("/buscar/", buscaNoticia)
 //ENCONTRAR NOTICIA

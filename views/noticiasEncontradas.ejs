@@ -9,16 +9,18 @@
    
     <div class="flexContainer">
         <% noticias.forEach(element => { %>
-            <article>
+            <article class="noticia">
                 <h3><a href="buscada/<%= element.titulo %>" class="btnTabla"><%= element.titulo %></a></h3>
-                <p class="parrafoCorto"><%= element.noticia %></p>
+                <p>CREADA POR: <a href="/creadapor/<%= element.creador %>/<%= element.nombrecreador %>" class="btnTabla"><%= element.nombrecreador %></a> el <%= element.fecha %></p>
+                <p class="parrafoCorto">NOTICIA: <%= element.noticia %></p>
                 <div>
                     <figure>
                        
                         <img src="<%= element.imagen%>" alt="">
                     </figure>
+
                 </div>
-               
+                
                 
               
             </article>

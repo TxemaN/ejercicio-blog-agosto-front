@@ -30,7 +30,7 @@ router.post("/creada/", noticiaCreada)
 
 
 //Mostrar el formulario de 'editar' pelicula
-router.get('/editar/:id', formatoEditar)
+router.get('/editar/:id/:uid/:nombrecreador/:miuid/:minombrecreador', formatoEditar)
 
 //lanza la pelicula ya editada
 router.post('/editada/:id', noticiaEditada)
@@ -42,7 +42,7 @@ router.get('/borrada/:id/:uid/:nombrecreador', borrarNoticia)
 router.get("/todasnoticiasadmin/:id/:nombrecreador", getNoticia)
 router.get("/buscareditor/", buscarNoticiaEditor)
 
-router.get("/noticiaseditoradmin/:nombrecreador", getNoticiaEditor)
+router.get("/noticiaseditoradmin/:id/:nombrecreador/:miuid/:minombrecreador", getNoticiaEditor)
 
 //VER TODOS LOS EDITORES
 router.get("/todosloseditoresadmin/:id/:nombrecreador", getEditores)

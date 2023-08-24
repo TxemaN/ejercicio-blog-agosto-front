@@ -3,17 +3,31 @@
 <main>
 
     <h2>EDITAR NOTICIA</h2>
-    <form id="formulario"  action="/admin/editada/<%= noticias._id %>" method="post"  >
+    <form  action="/adminillo/editada/<%= noticias._id %>" method="post">
+        <div class="formulario">
+            
+            <label for="idAdmin">ID ADMIN: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+            <input type="text" class="invariable" name="idAdmin"  value="<%= idAdmin  %>" readonly>
+            <label for="nombreAdmin">Nombre Admin: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+            <input type="text" class="invariable" name="nombreAdmin"  value="<%= nombreAdmin  %> " readonly>
 
-        <p>Editar una noticia</p>
-        <h2><%= noticias._id %></h2>
-        <label for="titulo">Título:</label>
-        
-        <input type="text"  value="<%= noticias.titulo %>" name="titulo" >
 
-        <label for="noticia">Cuerpo noticia:</label>
-        <textarea  name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
-      
-        <button type="submit" id="editaPeli" _method="put" class="btn" >Editar noticia</button>
+            <label for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+            <input type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
+            <label for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+            <input type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %> " readonly>
+
+            <label for="titulo">Título:</label>
+
+            <input type="text" value="<%= noticias.titulo %>" name="titulo">
+            <label for="noticia">Cuerpo noticia:</label>
+            <textarea name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
+            <label for="imagensrc">URL Imagen:</label>
+            <textarea name="imagensrc"> </textarea>
+            <label for="imagenalt">DESCRIPCIÓN IMAGEN:</label>
+            <input type="text" name="imagenalt">
+            
+        </div>
+        <button type="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>
     </form>
 </main>

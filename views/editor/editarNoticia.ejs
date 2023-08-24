@@ -17,8 +17,10 @@
                     <input type="text" value="<%= noticias.titulo %>" name="titulo">
                     <label for="noticia">Cuerpo noticia:</label>
                     <textarea name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
-                    <label for="imagen">URL imagen:</label>
-                    <textarea name="imagen" id="imagenId" rows="4" cols="50"> <%= noticias.imagen %> </textarea>
+                    <label for="imagensrc">URL Imagen:</label>
+                    <textarea name="imagensrc"> </textarea>
+                    <label for="imagenalt">DESCRIPCIÓN IMAGEN:</label>
+                    <input type="text" name="imagenalt">
                     
                 </div>
                 <button type="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>

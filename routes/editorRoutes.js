@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 
-const {crearNoticiaEditor, noticiaCreadaEditor, getNoticiaEditor, panelUsuario, noticiaEditada, preguntaBorrar, borrarNoticia, formatoEditar, encontrarNoticia, encontrarNoticiaAjena, getNoticia } = require("../controllers/editoController")
+const {crearNoticiaEditor, noticiaCreadaEditor, getNoticiaEditor, getNoticiaOtroEditor, panelUsuario, noticiaEditada, preguntaBorrar, borrarNoticia, formatoEditar, encontrarNoticia, encontrarNoticiaAjena, getNoticia } = require("../controllers/editoController")
 
 //PANEL USUARIO
 router.get('/', panelUsuario)
@@ -10,6 +10,8 @@ router.get('/', panelUsuario)
 
 router.get("/todasnoticias/:id/:nombrecreador", getNoticia)
 
+//NOTICIAS EDITOR ESPECIFICO
+router.get("/creadapor/:id/:nombrecreador/:uid/:minombrecreador", getNoticiaOtroEditor)
 //NOTICIAS AJENAS
 
 router.get("/buscadaAjena/:titulo/:id/:nombrecreador", encontrarNoticiaAjena)

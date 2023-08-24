@@ -1,4 +1,4 @@
-
+const fetch = require('node-fetch');
 const getNoticia = async (req, res) => {
 
     try {
@@ -17,8 +17,26 @@ const getNoticia = async (req, res) => {
     }
 
 }
+//NOTICIA EDITOR ESPECÍFICO
+const getNoticiaEditor = async (req, res) => {
+    const minombrecreador = req.params.nombrecreador;
+    try {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/creadapor/${req.params.id}`);
+        if (resp.ok) {
+            const noticias = await resp.json();
+            
+            res.render("editorEncontrado.ejs", {
+                titulo: `NOTICIAS ENVIADAS POR ${minombrecreador}`,
+                noticias: noticias.data,
+                
+            })
 
+        }
+    } catch (error) {
+        console.log(error);
+    }
 
+}
 
 
 
@@ -173,6 +191,7 @@ const usuarioLogeado = async (req, res) => {
 module.exports = {
 
     getNoticia,
+    getNoticiaEditor,
     buscaNoticia,
     encontrarNoticia,
     crearCuenta,

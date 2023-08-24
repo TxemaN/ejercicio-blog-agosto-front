@@ -51,6 +51,28 @@ const getNoticiaEditor = async (req, res) => {
 
 }
 
+const getNoticiaOtroEditor = async (req, res) => {
+    const nombrecreador = req.params.nombrecreador;
+    const uid = await req.params.uid;
+    const nombreUsuario = req.params.minombrecreador;
+    try {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/creadapor/${req.params.id}`);
+        if (resp.ok) {
+            const noticias = await resp.json();
+            const idUsuario = uid
+            res.render("editor/editorEncontrado.ejs", {
+                titulo: `NOTICIAS ENVIADAS POR ${nombrecreador}`,
+                noticias: noticias.data,
+                idUsuario: idUsuario,
+                nombreUsuario: nombreUsuario
+            })
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 
 
 
@@ -80,11 +102,12 @@ const crearNoticiaEditor = async (req, res) => {
 
 const noticiaCreadaEditor = async (req, res) => {
 
-    const { titulo, noticia, imagen, creador, nombrecreador } = req.body
+    const { titulo, noticia, imagensrc, imagenalt,  creador, nombrecreador } = req.body
     const body = {
         titulo,
         noticia,
-        imagen,
+        imagensrc,
+        imagenalt,
         creador,
         nombrecreador
     }
@@ -98,10 +121,10 @@ const noticiaCreadaEditor = async (req, res) => {
         });
         if (resp.ok) {
 
-            const noticias = await resp.json();
-
-            res.send("noticia creada")
-            console.log(noticias)
+            if (resp.ok) {
+                const noticias = await resp.json();
+            res.redirect(`/editor/creadapor/${noticias.noticia.creador}/${noticias.noticia.nombrecreador}`)
+            }
 
         }
     } catch (error) {
@@ -136,11 +159,12 @@ const formatoEditar = async (req, res) => {
 
 const noticiaEditada = async (req, res) => {
 
-    const { titulo, noticia, imagen, uid, nombrecreador} = req.body
+    const { titulo, noticia, imagensrc, imagenalt, uid, nombrecreador} = req.body
     const body = {
         titulo,
         noticia,
-        imagen,
+        imagensrc,
+        imagenalt,
         uid,
         nombrecreador
     }
@@ -292,6 +316,7 @@ module.exports = {
     crearNoticiaEditor,
     noticiaCreadaEditor,
     getNoticiaEditor,
+    getNoticiaOtroEditor,
     panelUsuario,
     formatoEditar,
     noticiaEditada,

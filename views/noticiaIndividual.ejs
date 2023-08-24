@@ -1,9 +1,9 @@
 <%- include('templates/header.ejs') %>
+<%- include('templates/nav.ejs') %>
 
 
 <main>
-    <a href="/accedercuenta/" class="btnTabla">Login</a>
-    <a href="/crearcuenta/" class="btnTabla">Registrarse</a>
+    
     
     
     <h1><%= titulo %></h1>
@@ -12,13 +12,15 @@
        
             <article>
                 <h3><%= noticias.titulo %></h3>
-                <p class=""><%= noticias.noticia %></p>
+                <p>CREADA POR: <a href="/creadapor/<%= noticias.creador %>/<%= noticias.nombrecreador %>" class="btnTabla"><%= noticias.nombrecreador %></a> el <%= noticias.fecha %></p>
+                <p><%= noticias.noticia %></p>
                 <div>
                     <figure>
                        
                         <img src="<%= noticias.imagen%>" alt="">
                     </figure>
                 </div>
+                
                 
               
             </article>

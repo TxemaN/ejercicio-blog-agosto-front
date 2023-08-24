@@ -10,11 +10,12 @@
        
             <article>
                 <h3><%= noticias.titulo %></h3>
+                <p class="textCenter">CREADA POR: <a href="/editor/creadapor/<%= noticias.creador %>/<%= noticias.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla"><%= noticias.nombrecreador %></a> el <%= noticias.fecha %> </p>
                 <p class=""><%= noticias.noticia %></p>
                 <div >
                     <figure class="fotos">
                        
-                        <img src="<%= noticias.imagen%>" alt="">
+                        <img src="<%= noticias.imagensrc%>" alt="<%= noticias.imagenalt%>">
                     </figure>
                 </div>
                 
