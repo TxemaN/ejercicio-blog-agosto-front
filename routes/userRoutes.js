@@ -26,7 +26,7 @@ router.post("/cuentacreada/", cuentaCreada)
 router.get("/accedercuenta/", hacerLogin)
 
 //Usuario logeado
-router.post("/cuentalogeada/", usuarioLogeado)
+router.get("/cuentalogeada/", usuarioLogeado)
 
 
 
