@@ -158,7 +158,7 @@ const noticiaEditada = async (req, res) => {
         nombreAdmin
     }
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.id}`, {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`, {
             method: "put", body: JSON.stringify(body),
 
             headers: {

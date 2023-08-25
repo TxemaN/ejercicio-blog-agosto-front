@@ -170,7 +170,7 @@ const noticiaEditada = async (req, res) => {
     }
     
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.id}`, {
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`, {
             method: "put", body: JSON.stringify(body),
 
             headers: {
@@ -236,7 +236,7 @@ const encontrarNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.titulo}`, { method: "get" });
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.titulo}`, { method: "get" });
         if (resp.ok) {
 
             const noticias = await resp.json();
@@ -262,7 +262,7 @@ const encontrarNoticiaAjena = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.titulo}`, { method: "get" });
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.titulo}`, { method: "get" });
         if (resp.ok) {
 
             const noticias = await resp.json();
@@ -287,7 +287,7 @@ const getNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/`);
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`);
         if (uid) {
 
             const noticias = await resp.json();

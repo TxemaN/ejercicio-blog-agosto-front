@@ -59,7 +59,7 @@ const buscaNoticia = async (req, res) => {
 const encontrarNoticia = async (req, res) => {
 
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/${req.params.titulo}`, { method: "get" });
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.titulo}`, { method: "get" });
         if (resp.ok) {
 
             const noticias = await resp.json();
@@ -81,7 +81,7 @@ const encontrarNoticia = async (req, res) => {
 const encontrarNoticias = async (req, res) => {
 
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/blog/`, { method: "post" });
+        const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`, { method: "post" });
         if (resp.ok) {
 
             const noticias = await resp.json();
@@ -179,7 +179,7 @@ const usuarioLogeado = async (req, res) => {
         password,
   }
     try {
-        const resp = await fetch("http://localhost:3000/api/v1/auth/login/", {
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth/login/", {
             method: "post", body: JSON.stringify(body),
 
             headers: {
