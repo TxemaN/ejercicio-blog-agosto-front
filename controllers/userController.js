@@ -179,7 +179,7 @@ const usuarioLogeado = async (req, res) => {
         password,
   }
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth/login/", {
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth", {
             method: "post", body: JSON.stringify(body),
 
             headers: {
