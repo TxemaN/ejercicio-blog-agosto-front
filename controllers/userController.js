@@ -104,7 +104,7 @@ const encontrarNoticias = async (req, res) => {
 const crearCuenta = async (req, res) => {
 
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog");
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth");
         if (resp.ok) {
 
 
@@ -154,7 +154,7 @@ const cuentaCreada = async (req, res) => {
 const hacerLogin = async (req, res) => {
 
     try {
-        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog");
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/auth");
         if (resp.ok) {
 
 
