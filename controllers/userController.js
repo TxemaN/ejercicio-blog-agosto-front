@@ -1,4 +1,6 @@
 
+const fetch = require("node-fetch")
+
 const getNoticia = async (req, res) => {
 
     try {
@@ -64,6 +66,28 @@ const encontrarNoticia = async (req, res) => {
 
 
             res.render("noticiaIndividual.ejs", {
+                titulo: "sección de noticias",
+                noticias: noticias.data
+            })
+
+        }
+    }
+    catch (error) {
+        console.log(error);
+    }
+
+}
+
+const encontrarNoticias = async (req, res) => {
+
+    try {
+        const resp = await fetch(`http://localhost:3000/api/v1/blog/`, { method: "post" });
+        if (resp.ok) {
+
+            const noticias = await resp.json();
+
+
+            res.render("noticiasEncontradas.ejs", {
                 titulo: "sección de noticias",
                 noticias: noticias.data
             })
@@ -194,6 +218,7 @@ module.exports = {
     getNoticiaEditor,
     buscaNoticia,
     encontrarNoticia,
+    encontrarNoticias,
     crearCuenta,
     cuentaCreada,
     hacerLogin,

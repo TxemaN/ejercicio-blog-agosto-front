@@ -1,3 +1,5 @@
+const fetch = require("node-fetch")
+
 const getNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;

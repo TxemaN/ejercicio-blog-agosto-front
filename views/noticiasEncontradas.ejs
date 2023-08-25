@@ -5,8 +5,21 @@
 <main>
     
     
-    <h1><%= titulo %></h1>
-   
+    
+   <section>
+    <div>
+        <h1>BUSCA una noticia</h1>
+        <label for="titulo">Título:</label>
+        <input type="text" placeholder="título" name="titulo" id="tituloId"  />
+        
+
+        <a href = "javascript:;" onclick = "this.href='buscada/' + document.getElementById('tituloId').value">BUSCAR</a>
+
+
+    </div>
+</section>
+<h1><%= titulo %></h1>
+<section>
     <div class="flexContainer">
         <% noticias.forEach(element => { %>
             <article class="noticia">
@@ -26,4 +39,5 @@
             </article>
         <% }) %>
     </div>
+</section>
 </main>
