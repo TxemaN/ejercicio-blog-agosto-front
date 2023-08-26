@@ -1,5 +1,7 @@
+/** Requerimos fetch@2 para poder despegar en render.com. */
 const fetch = require("node-fetch")
 
+/** Obtiene todas las noticias y permite editarlas o borrarlas */
 const getNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
@@ -21,7 +23,7 @@ const getNoticia = async (req, res) => {
     }
 
 }
-//BUSCAR EDITOR
+/** Al hacer click sobre el nombre del autor en la noticia activa getNoticiaEditor. */
 const buscarNoticiaEditor = async (req, res) => {
 
     try {
@@ -41,7 +43,7 @@ const buscarNoticiaEditor = async (req, res) => {
 
 }
 
-//NOTICIAS POR EDITOR
+/** Si buscarNoticiaEditor funciona correctamente, despliega todas las noticias del editor. */
 const getNoticiaEditor = async (req, res) => {
     const uid = await req.params.uid;
     const nombreUsuario = req.params.nombrecreador;
@@ -53,11 +55,11 @@ const getNoticiaEditor = async (req, res) => {
             const noticias = await resp.json();
             const idUsuario = idAdmin;
             res.render("admin/editorEncontradoAdmin.ejs", {
-                titulo: "sección de noticias",
+                titulo: `NOTICIAS ENVIADAS POR ${nombreUsuario}`,
                 noticias: noticias.data,
                 idUsuario: idUsuario,
                 nombreUsuario: nombreAdmin,
-               
+
             })
 
         }
@@ -66,7 +68,7 @@ const getNoticiaEditor = async (req, res) => {
     }
 
 }
-//CREAR NOTCIA
+/** Comprueba que el back para auth esté correcto y si es así redirige al ejs de crear noticia */
 const crearNoticia = async (req, res) => {
 
     try {
@@ -86,6 +88,7 @@ const crearNoticia = async (req, res) => {
 
 }
 
+/** Una vez la noticia ha sido creada la sube a la base de datos. Imagen no utiliza multer todavía, sino la url */
 const noticiaCreada = async (req, res) => {
 
     const { titulo, noticia, imagen, creador } = req.body
@@ -116,7 +119,7 @@ const noticiaCreada = async (req, res) => {
     }
 
 }
-
+/** Esta función lleva a la sección de crear noticia, pero los campos ya están rellenados con los campos de la noticia original que se desea editar  */
 const formatoEditar = async (req, res) => {
     const uid = await req.params.uid;
     const nombreUsuario = req.params.nombrecreador;
@@ -133,7 +136,7 @@ const formatoEditar = async (req, res) => {
                 idUsuario: idUsuario,
                 nombreUsuario: nombreUsuario,
                 idAdmin: idAdmin,
-                nombreAdmin:nombreAdmin
+                nombreAdmin: nombreAdmin
 
             })
 
@@ -143,7 +146,7 @@ const formatoEditar = async (req, res) => {
     }
 
 }
-
+/** Una vez la noticia ha sido editada, lleva a cabo un PUT para los siguientes campos del cuerpo en la BBDD */
 const noticiaEditada = async (req, res) => {
 
     const { titulo, noticia, imagensrc, imagenalt, uid, nombrecreador, idAdmin, nombreAdmin } = req.body
@@ -154,7 +157,7 @@ const noticiaEditada = async (req, res) => {
         imagenalt,
         uid,
         nombrecreador,
-        idAdmin, 
+        idAdmin,
         nombreAdmin
     }
     try {
@@ -176,6 +179,8 @@ const noticiaEditada = async (req, res) => {
     }
 
 }
+
+/** EJS con la noticia a borrar y la pregunta de confirmación */
 const preguntaBorrar = async (req, res) => {
     const uid = await req.params.uid;
     const nombreUsuario = req.params.nombrecreador;
@@ -197,7 +202,7 @@ const preguntaBorrar = async (req, res) => {
     }
 
 }
-
+/** Una vez confirmada en el ejs de preguntarBorrar, lleva  acabo un delete sobbre el ID de la noticia*/
 const borrarNoticia = async (req, res) => {
 
     const uid = await req.params.uid;
@@ -219,7 +224,7 @@ const borrarNoticia = async (req, res) => {
 
 }
 
-//METER FOTO
+/** PRUEBA PARA METER LA FOTO CON MULTER, LOGRO SUBIRLA A LOCAL PERO NO PASARLA A BBDD*/
 const subirFoto = async (req, res) => {
 
     try {
@@ -239,7 +244,7 @@ const subirFoto = async (req, res) => {
 
 }
 
-//FOTO SUBIDA
+/** PRUEBA PARA METER LA FOTO CON MULTER, LOGRO SUBIRLA A LOCAL PERO NO PASARLA A BBDD*/
 const fotoSubida = async (req, res) => {
 
     try {
@@ -254,7 +259,7 @@ const fotoSubida = async (req, res) => {
 
 }
 
-//OBTENER TODOS LOS EDITORES
+/** Lista con todos los editores que muestra la opción de borrarlos*/
 
 const getEditores = async (req, res) => {
     const uid = await req.params.id;
@@ -278,7 +283,7 @@ const getEditores = async (req, res) => {
     }
 
 }
-//PREGUNTAR BORRAR EDITOR
+/** EJS con el editor a eliminar y la pregunta de confirmación */
 const preguntaBorrarEditor = async (req, res) => {
     const uid = await req.params.uid;
     const nombreUsuario = req.params.nombrecreador;
@@ -302,7 +307,7 @@ const preguntaBorrarEditor = async (req, res) => {
 
 }
 
-//ELIMINAR EDITOR
+/** Una vez confirmada en el ejs de preguntarBorrarEditor, lleva  acabo un delete sobbre el ID del creador*/
 
 const borrarEditor = async (req, res) => {
     const uid = await req.params.uid;

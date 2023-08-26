@@ -1,7 +1,8 @@
+/** Requerimos fetch@2 para poder despegar en render.com. */
 const fetch = require("node-fetch")
 
 
-//PANEL USUARIO
+/** Accede al panel de usuario, a través del cual se pueden acceder a las noticias propias y editarlas/borrarlas. */
 const panelUsuario = async (req, res) => {
 
     try {
@@ -24,7 +25,7 @@ const panelUsuario = async (req, res) => {
     };
 }
 
-//NOTICIAS POR CREADOR
+/** Con esta función vemos las noticias creadas por un editor específico logeado. Requerimos el ID para las noticias y el nombre para que aparezca en el header */
 
 const getNoticiaEditor = async (req, res) => {
     const uid = await req.params.id;
@@ -50,6 +51,8 @@ const getNoticiaEditor = async (req, res) => {
     }
 
 }
+
+/** Con esta función vemos las noticias creadas por otros editores, no se podrán editar. Requerimos el ID para las noticias y el nombre para que aparezca en el header */
 
 const getNoticiaOtroEditor = async (req, res) => {
     const nombrecreador = req.params.nombrecreador;
@@ -78,7 +81,7 @@ const getNoticiaOtroEditor = async (req, res) => {
 
 
 
-//CREAR NOTCIA
+/** Comprueba que el back para auth esté correcto y si es así redirige al ejs de crear noticia */
 const crearNoticiaEditor = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
@@ -99,7 +102,7 @@ const crearNoticiaEditor = async (req, res) => {
     }
 
 }
-
+/** Una vez la noticia ha sido creada la sube a la base de datos. Imagen no utiliza multer todavía, sino la url */
 const noticiaCreadaEditor = async (req, res) => {
 
     const { titulo, noticia, imagensrc, imagenalt,  creador, nombrecreador } = req.body
@@ -132,8 +135,7 @@ const noticiaCreadaEditor = async (req, res) => {
     }
 
 }
-
-//EDITAR NOTICIAS
+/** Esta función lleva a la sección de crear noticia, pero los campos ya están rellenados con los campos de la noticia original que se desea editar  */
 
 const formatoEditar = async (req, res) => {
     const uid = await req.params.uid;
@@ -157,6 +159,7 @@ const formatoEditar = async (req, res) => {
 
 }
 
+/** Una vez la noticia ha sido editada, lleva a cabo un PUT para los siguientes campos del cuerpo en la BBDD */
 const noticiaEditada = async (req, res) => {
 
     const { titulo, noticia, imagensrc, imagenalt, uid, nombrecreador} = req.body
@@ -188,6 +191,7 @@ console.log(noticias)
 
 }
 
+/** EJS con la noticia a borrar y la pregunta de confirmación */
 const preguntaBorrar = async (req, res) => {
     const uid = await req.params.uid;
     const nombreUsuario = req.params.nombrecreador;
@@ -210,7 +214,7 @@ const preguntaBorrar = async (req, res) => {
 
 }
 
-
+/** Una vez confirmada en el ejs de preguntarBorrar, lleva  acabo un delete sobbre el ID de la noticia*/
 const borrarNoticia = async (req, res) => {
 
     const uid = await req.params.uid;
@@ -232,6 +236,8 @@ const borrarNoticia = async (req, res) => {
     }
 
 }
+
+/** EJS que despliega una noticia específica del editor y permite editar/borrar */
 const encontrarNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
@@ -258,6 +264,8 @@ const encontrarNoticia = async (req, res) => {
 
 }
 
+/** EJS con la noticia de otros editor. No permite editar/borrar */
+
 const encontrarNoticiaAjena = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;
@@ -283,6 +291,7 @@ const encontrarNoticiaAjena = async (req, res) => {
 
 }
 
+/** EJS con todas las noticias publicadas */
 const getNoticia = async (req, res) => {
     const uid = await req.params.id;
     const nombreUsuario = req.params.nombrecreador;

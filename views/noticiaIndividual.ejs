@@ -13,11 +13,11 @@
             <article>
                 <h3><%= noticias.titulo %></h3>
                 <p>CREADA POR: <a href="/creadapor/<%= noticias.creador %>/<%= noticias.nombrecreador %>" class="btnTabla"><%= noticias.nombrecreador %></a> el <%= noticias.fecha %></p>
-                <p><%= noticias.noticia %></p>
+                <p class="parrafoLargo"><%= noticias.noticia %></p>
                 <div>
                     <figure>
                        
-                        <img src="<%= noticias.imagen%>" alt="">
+                        <img src="<%= noticias.imagensrc%>" alt="">
                     </figure>
                 </div>
                 
@@ -27,3 +27,4 @@
       
     </div>
 </main>
+<%- include ('templates/footer.ejs') %>

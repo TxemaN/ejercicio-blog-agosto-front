@@ -12,10 +12,11 @@
                 <p class="textCenter"><%= usuario.uid %></p>
                 <p class="textCenter"><%= usuario.role %></p>
                 
-                <a href="/adminillo/todasnoticiasadmin/<%= usuario.uid %>/<%= usuario.nombre %>" class="btnTabla">Lista niticias</a>
+                <a href="/adminillo/todasnoticiasadmin/<%= usuario.uid %>/<%= usuario.nombre %>" class="btnTabla">Lista noticias</a>
                 <a href="/adminillo/todosloseditoresadmin/<%= usuario.uid  %>/<%= usuario.nombre %>" class="btnTabla">Lista editores</a>
                 
             </div>
         
     </div>
 </main>
+<%- include('../templates/footer.ejs') %>

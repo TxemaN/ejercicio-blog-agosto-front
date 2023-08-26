@@ -7,10 +7,10 @@
                 <div class="formulario">
                     
                    
-                    <label for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
-                    <input type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
-                    <label for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
-                    <input type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %> " readonly>
+                    <label hidden for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input hidden type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
+                    <label hidden for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input hidden type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %> " readonly>
 
                     <label for="titulo">Título:</label>
 
@@ -23,6 +23,7 @@
                     <input type="text" name="imagenalt">
                     
                 </div>
-                <button type="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>
+                <button type="submit" class ="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>
             </form>
         </main>
+        <%- include('../templates/footer.ejs') %>

@@ -6,10 +6,10 @@
                 <form method="post"  action="/editor/creada/">
 
                     <div class="formulario">
-                    <label for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
-                    <input type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
-                    <label for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
-                    <input type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %>" readonly>
+                    <label hidden for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input hidden type="text" class="invariable" name="creador" id="creadorId" value="<%= idUsuario  %>" readonly>
+                    <label hidden for="nombreCreador">Nombre creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
+                    <input hidden type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %>" readonly>
                     <label for="titulo">Título:</label>
                     <input type="text" placeholder="título" name="titulo" id="tituloId">
                     <label for="noticia">Cuerpo noticia:</label>
@@ -21,8 +21,9 @@
                     
                 </div>
 
-                    <button type="submit" class="btn">Añadir noticia</button>
+                    <button type="submit" class ="submit">Añadir noticia</button>
 
                 </form>
             
         </main>
+        <%- include('../templates/footer.ejs') %>

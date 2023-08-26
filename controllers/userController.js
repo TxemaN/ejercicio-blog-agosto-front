@@ -1,6 +1,6 @@
-
+/** Requerimos fetch@2 para poder despegar en render.com. */
 const fetch = require("node-fetch")
-
+/** Función para obtener todas las noticias en la página inicial. */
 const getNoticia = async (req, res) => {
 
     try {
@@ -19,7 +19,7 @@ const getNoticia = async (req, res) => {
     }
 
 }
-//NOTICIA EDITOR ESPECÍFICO
+/** Con esta función vemos las noticias creadas por un editor específico. Requerimos el ID para las noticias y el nombre para que aparezca en el header */
 const getNoticiaEditor = async (req, res) => {
     const minombrecreador = req.params.nombrecreador;
     try {
@@ -42,19 +42,8 @@ const getNoticiaEditor = async (req, res) => {
 
 
 
-//BUSCA NOTICIA
+/** Encuentra la noticia por título y abre la versión larga de la misma al hacer click en el título */
 
-const buscaNoticia = async (req, res) => {
-
-
-
-    res.render("buscaNoticia.ejs", {
-        titulo: "Buscar Noticias",
-
-
-    })
-
-}
 
 const encontrarNoticia = async (req, res) => {
 
@@ -78,6 +67,7 @@ const encontrarNoticia = async (req, res) => {
 
 }
 
+/** Encuentra noticias que contengan palabras introducidas en el formulario de búsqueda. */
 const encontrarNoticias = async (req, res) => {
 
     try {
@@ -100,7 +90,7 @@ const encontrarNoticias = async (req, res) => {
 
 }
 
-//CREAR CUENTA
+/** Comrpueba que la parte del back de autenticación esté correcta y dirije al ejs de crear usuario. */
 const crearCuenta = async (req, res) => {
 
     try {
@@ -120,7 +110,7 @@ const crearCuenta = async (req, res) => {
 
 }
 
-//CUENTACREADA
+/** Una vez creada la cuenta recoge el email, nombre y password el usuario para añadirlo a la BBDD. */
 
 const cuentaCreada = async (req, res) => {
 
@@ -150,7 +140,7 @@ const cuentaCreada = async (req, res) => {
 
 }
 
-//LOGIN
+/** Comrpueba que la parte del back de autenticación esté correcta y dirije al ejs del login. */
 const hacerLogin = async (req, res) => {
 
     try {
@@ -170,7 +160,7 @@ const hacerLogin = async (req, res) => {
 
 }
 
-//LOGEADO
+/** Requiere el mail de usuario y la contraseña, si coinciden con la BBDD genera el token y comprueba el rol. */
 const usuarioLogeado = async (req, res) => {
 
     const { email, password} = req.body
@@ -216,7 +206,7 @@ module.exports = {
 
     getNoticia,
     getNoticiaEditor,
-    buscaNoticia,
+   
     encontrarNoticia,
     encontrarNoticias,
     crearCuenta,

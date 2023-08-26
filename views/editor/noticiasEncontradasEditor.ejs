@@ -10,9 +10,10 @@
             <div>
                 <h3><a href="/editor/buscada/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla"><%= element.titulo %></a></h3>
                 <p class="textCenter"><%= element.fecha %></p>
-                <p class="parrafoCorto"><%= element.noticia %></p>
+                <div class="parrafoCorto">
+                <p ><%= element.noticia %></p>
                 <p class="textCenter"><%= element.imagen %></p>
-                <div class="fotos">
+                <div >
                     <figure>
                        
                         <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
@@ -20,8 +21,9 @@
                 </div>
                 <a href="/editor/editar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Editar</a>
                 <a href="/editor/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Borrar</a>
-                
+            </div>
             </div>
         <% }) %>
     </div>
 </main>
+<%- include('../templates/footer.ejs') %>

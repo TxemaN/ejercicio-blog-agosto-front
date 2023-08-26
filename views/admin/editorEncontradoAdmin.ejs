@@ -23,9 +23,11 @@
                 </div>
                 <p class="textCenter"> <%= element.fecha %></p>
               
+                <a href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>" >Editar</a>
                 <a href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" >Borrar</a>
                 
             </div>
         <% }) %>
     </div>
 </main>
+<%- include('../templates/footer.ejs') %>

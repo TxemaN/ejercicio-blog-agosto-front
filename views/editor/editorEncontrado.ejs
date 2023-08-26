@@ -9,11 +9,11 @@
         <% noticias.forEach(element => { %>
             <div class="noticia">
                
-                <h3 class="textCenter"><%= element.titulo %></h3>
+                <h3><a href="/editor/buscadaAjena/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla"> <%= element.titulo %></a></h3>
                
+                <div class="parrafoCorto">
                 
-                
-                <p class="cajanoticia"><%= element.noticia %></p>
+                <p><%= element.noticia %></p>
                
                 <div>
                     <figure>
@@ -21,6 +21,7 @@
                         <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
                     </figure>
                 </div>
+            </div>
                 <p class="textCenter"> <%= element.fecha %></p>
               
                 
@@ -29,3 +30,4 @@
         <% }) %>
     </div>
 </main>
+<%- include('../templates/footer.ejs') %>
