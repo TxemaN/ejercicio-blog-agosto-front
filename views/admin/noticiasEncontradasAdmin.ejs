@@ -15,12 +15,8 @@
                         <h3>
                             <%= element.titulo %>
                         </h3>
-                        <p class="textCenter">CREADA POR: <a
-                                href="/adminillo/noticiaseditoradmin/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>"
-                                class="btnTabla">
-                                <%= element.nombrecreador %>
-                            </a> el <%= element.fecha %>
-                        </p>
+                        <p>CREADA POR: <a
+                                href="/adminillo/noticiaseditoradmin/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>"><%= element.nombrecreador %>  </a> el <%= element.fecha %>  </p>
                         <p class="cajanoticia">
                             <%= element.noticia %>
                         </p>
@@ -32,11 +28,11 @@
                             </figure>
                         </div>
 
-                       
-                        <a href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>"
-                            class="btnTabla">Editar</a>
-                        <a href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>"
-                            class="btnTabla">Borrar</a>
+
+                        <a
+                            href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>">Editar</a>
+                        <a
+                            href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>">Borrar</a>
 
                     </div>
                     <% }) %>

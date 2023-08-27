@@ -7,13 +7,13 @@
     <div class="flexContainer">
         
             <div>
-                <h3 class="textCenter"><%= usuario.email %></h3>
-                <p class="textCenter"><%= usuario.nombre %></p>
-                <p class="textCenter"><%= usuario.uid %></p>
-                <p class="textCenter"><%= usuario.role %></p>
+                <h3><%= usuario.email %></h3>
+                <p><%= usuario.nombre %></p>
+                <p><%= usuario.uid %></p>
+                <p><%= usuario.role %></p>
                 
-                <a href="/adminillo/todasnoticiasadmin/<%= usuario.uid %>/<%= usuario.nombre %>" class="btnTabla">Lista noticias</a>
-                <a href="/adminillo/todosloseditoresadmin/<%= usuario.uid  %>/<%= usuario.nombre %>" class="btnTabla">Lista editores</a>
+                <a href="/adminillo/todasnoticiasadmin/<%= usuario.uid %>/<%= usuario.nombre %>" >Lista noticias</a>
+                <a href="/adminillo/todosloseditoresadmin/<%= usuario.uid  %>/<%= usuario.nombre %>" >Lista editores</a>
                 
             </div>
         
