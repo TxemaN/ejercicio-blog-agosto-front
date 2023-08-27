@@ -1,0 +1,20 @@
+<%- include('templates/header.ejs') %>
+
+<main>
+    <h1><%= titulo %></h1>
+
+    <div class="flexContainer">
+        
+        <% noticias.forEach(element => { %>
+           
+            
+                <h3><%= element.titulo %></h3>
+                <p><%= element.noticia %></p>
+              
+            
+          
+        <% }) %>
+        
+    </div>
+</main>
+<%- include ('templates/footer.ejs') %>

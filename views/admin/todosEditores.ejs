@@ -1,0 +1,28 @@
+<%- include('../templates/header.ejs') %>
+    <%- include('../templates/navAdmin.ejs') %>
+
+
+<main>
+    <h1><%= titulo %></h1>
+    
+    <div class="flexContainer">
+        <% editores.forEach(element => { %>
+            <div>
+                <h3><%= element.email %></h3>
+                <p><%= element.nombre %></p>
+                <p><%= element.role %></p>
+                <p><%= element._id %></p>
+                
+                
+                
+             
+                <% if(element.role !="admin") { %>
+                    
+                    <a href="/adminillo/borrareditor/<%= element._id%>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla">Eliminar</a>
+                    <% } %>
+
+            </div>
+        <% }) %>
+    </div>
+</main>
+<%- include('../templates/footer.ejs') %>

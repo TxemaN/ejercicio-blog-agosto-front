@@ -1,0 +1,33 @@
+<%- include('templates/header.ejs') %>
+<%- include('templates/nav.ejs') %>
+
+
+<main>
+    <h1><%= titulo %></h1>
+    
+    <div class="flexContainer">
+        <% noticias.forEach(element => { %>
+            <div class="noticia">
+               
+                <h3><a href="/buscada/<%= element.titulo %>" class="btnTabla"><%= element.titulo %></a></h3>
+               
+                
+                <div class="parrafoCorto">
+                <p ><%= element.noticia %></p>
+               
+                <div>
+                    <figure>
+                       
+                        <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
+                    </figure>
+                </div>
+            </div>
+                <p class="textCenter"> <%= element.fecha %></p>
+              
+                
+                
+            </div>
+        <% }) %>
+    </div>
+</main>
+<%- include ('templates/footer.ejs') %>
