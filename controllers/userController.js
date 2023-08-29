@@ -185,14 +185,16 @@ const usuarioLogeado = async (req, res) => {
 
                 res.render("admin/panelAdmin.ejs", {
                     titulo: "PANEL ADMINISTRADOR",
-                    usuario: usuario
+                    usuario: usuario,
+                    
                 })
                 
 
             } else {
                 res.render("panelUsuario.ejs", {
                     titulo: "PANEL USUARIO",
-                    usuario: usuario
+                    usuario: usuario,
+                    
                 })
             }
         }
