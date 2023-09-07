@@ -19,6 +19,24 @@ const getNoticia = async (req, res) => {
     }
 
 }
+const buscarNoticia = async (req, res) => {
+
+    try {
+        const resp = await fetch("https://blog-agosto-back.onrender.com/api/v1/blog/", { method: "get" });
+        if (resp.ok) {
+            const noticias = await resp.json();
+
+            res.render("noticiasEncontradas.ejs", {
+                titulo: "sección de noticias",
+                noticias: noticias.data
+            })
+
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+}
 /** Con esta función vemos las noticias creadas por un editor específico. Requerimos el ID para las noticias y el nombre para que aparezca en el header */
 const getNoticiaEditor = async (req, res) => {
     const minombrecreador = req.params.nombrecreador;

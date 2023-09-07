@@ -9,11 +9,12 @@
 
             <table class="noticia">
                 <thead>
-                    <td>Título</td>
-                    <td>Creador</td>
-                    <td>Fecha</td>
-                    <td>Descripción corta</td>
-                    <td>Miniatura</td>
+                    <th>Título</th>
+                    <th>Creador</th>
+                    <th>Fecha</th>
+                    <th>Descripción corta</th>
+                    <th>Miniatura</th>
+                    <th>Acción</th>
                     </thead>
                     <tbody>
                 <% noticias.forEach(element=> { %>
@@ -41,7 +42,7 @@
 
 
                             <td>  <a href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>">Editar</a>   
-                                <td>  <a href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>">Borrar</a> </td>
+                                  <a href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>">Borrar</a> </td>
                             </tr>
                     
                     <% }) %>
