@@ -192,7 +192,8 @@ const usuarioLogeado = async (req, res) => {
 
             headers: {
                 'Content-Type': 'application/json'
-            }
+            }, 
+            credentials: "include"
         });
         if (resp.ok) {
             
