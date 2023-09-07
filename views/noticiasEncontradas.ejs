@@ -20,25 +20,25 @@
 </section>
 <h1><%= titulo %></h1>
 <section>
-    <div class="flexContainer">
+    
         <% noticias.forEach(element => { %>
             <article class="noticia">
                 <h3><a href="buscada/<%= element.titulo %>" ><%= element.titulo %></a></h3>
                 <p>CREADA POR: <a href="/creadapor/<%= element.creador %>/<%= element.nombrecreador %>" class="btnTabla"><%= element.nombrecreador %></a> el <%= element.fecha %></p>
                 <div class="parrafoCorto">
-                <p >NOTICIA: <%= element.noticia %></p>
+                <p >NOTICIA: <%= element.intronoticia %></p>
                 <div>
-                    <figure>
+                    
                        
                         <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
-                    </figure>
+                   
                 </div>
             </div>
                 
               
             </article>
         <% }) %>
-    </div>
+    
 </section>
 </main>
 <%- include ('templates/footer.ejs') %>

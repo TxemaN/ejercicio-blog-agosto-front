@@ -3,7 +3,7 @@
         <main>
             <h1>Añade una noticia</h1>
            
-                <form method="post"  action="/editor/creada/">
+                <form method="post"  action="/editor/creada/" enctype="multipart/form-data">
 
                     <div class="formulario">
                     <label hidden for="creador">ID creador: (ESTE CAMPO ES EXCLUSIVO NO SE PUEDE MODIFICAR)</label>
@@ -12,12 +12,16 @@
                     <input hidden type="text" class="invariable" name="nombrecreador" id="creadorId" value="<%= nombreUsuario  %>" readonly>
                     <label for="titulo">Título:</label>
                     <input type="text" placeholder="título" name="titulo" id="tituloId">
+                    <label for="intronoticia">Decribe brevemente la noticia:</label>
+                    <textarea name="intronoticia" id="intronoticia" rows="1" cols="50">Descripción breve</textarea>
+
                     <label for="noticia">Cuerpo noticia:</label>
                     <textarea name="noticia" id="noticiaId" rows="4" cols="50">Descripción </textarea>
-                    <label for="imagensrc">URL Imagen:</label>
-                    <textarea name="imagensrc"> </textarea>
+                    
                     <label for="imagenalt">DESCRIPCIÓN IMAGEN:</label>
                     <input type="text" name="imagenalt">
+                    <label for="uploaded_file">foto</label>
+                    <input type="file" class="form-control-file" name="uploaded_file">
                     
                 </div>
 

@@ -3,7 +3,7 @@
         <main>
 
             <h2>EDITAR NOTICIA</h2>
-            <form  action="/editor/editada/<%= noticias._id %>" method="post">
+            <form  action="/editor/editada/<%= noticias._id %>" method="post" enctype="multipart/form-data">
                 <div class="formulario">
                     
                    
@@ -15,12 +15,22 @@
                     <label for="titulo">Título:</label>
 
                     <input type="text" value="<%= noticias.titulo %>" name="titulo">
+
+
+                    <label for="intronoticia">Descripción breve noticia:</label>
+                    <textarea name="intronoticia" id="intronoticia" rows="1" cols="50"> <%= noticias.intronoticia %></textarea>
+
                     <label for="noticia">Cuerpo noticia:</label>
                     <textarea name="noticia" id="noticiaId" rows="4" cols="50"> <%= noticias.noticia %> </textarea>
-                    <label for="imagensrc">URL Imagen:</label>
-                    <textarea name="imagensrc"><%= noticias.imagensrc %> </textarea>
-                    <label for="imagenalt">DESCRIPCIÓN IMAGEN:</label>
-                    <input type="text" name="imagenalt">
+                    <div>
+                    
+
+                        <img src="/<%= noticias.imagensrc%>" alt="<%= noticias.imagenalt%>">
+                  
+                </div>
+                    
+                    <label for="uploaded_file">foto</label>
+                    <input type="file" class="form-control-file" name="uploaded_file">
                     
                 </div>
                 <button type="submit" class ="submit" id="editaPeli" _method="put" class="btn">Editar noticia</button>

@@ -149,11 +149,12 @@ const formatoEditar = async (req, res) => {
 /** Una vez la noticia ha sido editada, lleva a cabo un PUT para los siguientes campos del cuerpo en la BBDD */
 const noticiaEditada = async (req, res) => {
 
-    const { titulo, noticia, imagensrc, imagenalt, uid, nombrecreador, idAdmin, nombreAdmin } = req.body
+    const { titulo, intronoticia, noticia, imagensrc, imagenalt, uid, nombrecreador, idAdmin, nombreAdmin } = req.body
     const body = {
         titulo,
         noticia,
-        imagensrc,
+        intronoticia,
+        imagensrc: `uploads/${req.file.filename}`,
         imagenalt,
         uid,
         nombrecreador,

@@ -95,7 +95,7 @@ const crearNoticiaEditor = async (req, res) => {
                 idUsuario: idUsuario,
                 nombreUsuario: nombreUsuario
             })
-            
+
         }
     } catch (error) {
         console.log(error);
@@ -105,15 +105,20 @@ const crearNoticiaEditor = async (req, res) => {
 /** Una vez la noticia ha sido creada la sube a la base de datos. Imagen no utiliza multer todavía, sino la url */
 const noticiaCreadaEditor = async (req, res) => {
 
-    const { titulo, noticia, imagensrc, imagenalt,  creador, nombrecreador } = req.body
+
+    const { titulo, intronoticia, noticia, imagensrc, imagenalt, creador, nombrecreador } = req.body
     const body = {
         titulo,
+        intronoticia,
         noticia,
-        imagensrc,
+        imagensrc: `uploads/${req.file.filename}`,
         imagenalt,
         creador,
-        nombrecreador
+        nombrecreador,
+       
+        
     }
+   
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/`, {
             method: "post", body: JSON.stringify(body),
@@ -124,16 +129,16 @@ const noticiaCreadaEditor = async (req, res) => {
         });
         if (resp.ok) {
 
-            if (resp.ok) {
-                const noticias = await resp.json();
+
+            const noticias = await resp.json();
             res.redirect(`/editor/creadapor/${noticias.noticia.creador}/${noticias.noticia.nombrecreador}`)
-            }
+
 
         }
     } catch (error) {
         console.log(error);
     }
-
+console.log( imagensrc)
 }
 /** Esta función lleva a la sección de crear noticia, pero los campos ya están rellenados con los campos de la noticia original que se desea editar  */
 
@@ -162,16 +167,17 @@ const formatoEditar = async (req, res) => {
 /** Una vez la noticia ha sido editada, lleva a cabo un PUT para los siguientes campos del cuerpo en la BBDD */
 const noticiaEditada = async (req, res) => {
 
-    const { titulo, noticia, imagensrc, imagenalt, uid, nombrecreador} = req.body
+    const { titulo, intronoticia, noticia, imagensrc, imagenalt, uid, nombrecreador } = req.body
     const body = {
         titulo,
+        intronoticia,
         noticia,
-        imagensrc,
+        imagensrc: `uploads/${req.file.filename}`,
         imagenalt,
         uid,
         nombrecreador
     }
-    
+
     try {
         const resp = await fetch(`https://blog-agosto-back.onrender.com/api/v1/blog/${req.params.id}`, {
             method: "put", body: JSON.stringify(body),
@@ -183,7 +189,7 @@ const noticiaEditada = async (req, res) => {
         if (resp.ok) {
             const noticias = await resp.json();
             res.redirect(`/editor/creadapor/${noticias.noticia.creador}/${noticias.noticia.nombrecreador}`)
-console.log(noticias)
+            console.log(noticias)
         }
     } catch (error) {
         console.log(error);

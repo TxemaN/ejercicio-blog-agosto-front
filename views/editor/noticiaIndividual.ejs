@@ -6,16 +6,16 @@
     <main>
        
 
-        <div class= "enlaceEditar">
+        
 
             <article>
                 <h2>  <%= noticias.titulo %></h2>
                 <p class="parrafoLargo">  <%= noticias.noticia %></p>
                 <div>
-                    <figure>
+                    
 
-                        <img src="<%= noticias.imagensrc%>" alt="<%= noticias.imagenalt%>">
-                    </figure>
+                        <img src="/<%= noticias.imagensrc%>" alt="<%= noticias.imagenalt%>">
+                  
                 </div>
 
 
@@ -23,6 +23,6 @@
             <a  href="/editor/editar/<%= noticias.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>"
                >Editar</a>
                 <a href="/editor/borrar/<%= noticias.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" >Borrar</a>
-        </div>
+        
     </main>
     <%- include('../templates/footer.ejs') %>

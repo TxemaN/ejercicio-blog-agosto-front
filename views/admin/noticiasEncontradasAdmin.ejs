@@ -7,35 +7,45 @@
                 <%= titulo %>
             </h1>
 
-            <div class="flexContainer">
+            <table class="noticia">
+                <thead>
+                    <td>Título</td>
+                    <td>Creador</td>
+                    <td>Fecha</td>
+                    <td>Descripción corta</td>
+                    <td>Miniatura</td>
+                    </thead>
+                    <tbody>
                 <% noticias.forEach(element=> { %>
-                    <div class="noticia">
+                    
 
 
-                        <h3>
+                        <tr>
+                            <td>
                             <%= element.titulo %>
-                        </h3>
-                        <p>CREADA POR: <a
-                                href="/adminillo/noticiaseditoradmin/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>"><%= element.nombrecreador %>  </a> el <%= element.fecha %>  </p>
-                        <p class="cajanoticia">
-                            <%= element.noticia %>
-                        </p>
+                        </td>
+                      
+                        <td> <a href="/adminillo/noticiaseditoradmin/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>"><%= element.nombrecreador %>  </a>  </td>
 
-                        <div>
-                            <figure>
+                            <td><%= element.fecha %></td>
+                                   <td>
+                            <%= element.intronoticia %>
+                        </td>
 
-                                <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
-                            </figure>
-                        </div>
+                        <td class="miniatura">
+                            
+
+                                <img src="/<%= element.imagensrc%>" >
+                          
+                            </td>
 
 
-                        <a
-                            href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>">Editar</a>
-                        <a
-                            href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>">Borrar</a>
-
-                    </div>
+                            <td>  <a href="/adminillo/editar/<%= element.titulo %>/<%= element.creador %>/<%= element.nombrecreador %>/<%= idUsuario %>/<%= nombreUsuario %>">Editar</a>   
+                                <td>  <a href="/adminillo/borrar/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>">Borrar</a> </td>
+                            </tr>
+                    
                     <% }) %>
-            </div>
+                </tbody>
+                </table>
         </main>
         <%- include('../templates/footer.ejs') %>

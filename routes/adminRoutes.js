@@ -1,8 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
-const path = require('path');
+const multer = require('multer')
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads')
+  },
+  filename: function (req, file, cb) {
+    
+    cb(null, file.fieldname  + "-" + Date.now() + '.png' )
+  }
+})
+const upload = multer({ storage: storage })
 
 
 const {formatoEditar, getNoticia, noticiaEditada, preguntaBorrar, borrarNoticia, crearNoticia, noticiaCreada,subirFoto,fotoSubida, getNoticiaEditor, buscarNoticiaEditor, getEditores, preguntaBorrarEditor, borrarEditor} = require("../controllers/adminController")
@@ -11,14 +19,7 @@ const {formatoEditar, getNoticia, noticiaEditada, preguntaBorrar, borrarNoticia,
 
 router.get("/subir/", subirFoto)
 
-//IMAGEN SUBIDA
 
-router.post('/profile/', upload.single('imagen'), function (req, res, next) {
-    // req.file is the `avatar` file
-    // req.body will hold the text fields, if there were any
-    console.log(req.file)
-    res.render('admin/upload.ejs', { imagePath: req.file.path });
-  } )
 //PRUEBA COOKIES
 
 
@@ -33,7 +34,7 @@ router.post("/creada/", noticiaCreada)
 router.get('/editar/:id/:uid/:nombrecreador/:miuid/:minombrecreador', formatoEditar)
 
 //lanza la pelicula ya editada
-router.post('/editada/:id', noticiaEditada)
+router.post('/editada/:id',  upload.single('uploaded_file'), noticiaEditada)
 //PREGUNTA POR BORRAR  
 router.get('/borrar/:titulo/:uid/:nombrecreador', preguntaBorrar)
 //lanza la noticia ya borrada

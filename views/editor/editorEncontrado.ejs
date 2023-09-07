@@ -5,29 +5,29 @@
 <main>
     <h1><%= titulo %></h1>
     
-    <div class="flexContainer">
+    
         <% noticias.forEach(element => { %>
-            <div class="noticia">
+            <article class="noticia">
                
                 <h3><a href="/editor/buscadaAjena/<%= element.titulo %>/<%= idUsuario %>/<%= nombreUsuario %>" class="btnTabla"> <%= element.titulo %></a></h3>
                
                 <div class="parrafoCorto">
                 
-                <p><%= element.noticia %></p>
+                <p><%= element.intronoticia %></p>
                
                 <div>
-                    <figure>
+                    
                        
-                        <img src="<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
-                    </figure>
+                        <img src="/<%= element.imagensrc%>" alt="<%= element.imagenalt%>">
+                    
                 </div>
             </div>
                 <p class="textCenter"> <%= element.fecha %></p>
               
                 
                 
-            </div>
+        </article>
         <% }) %>
-    </div>
+   
 </main>
 <%- include('../templates/footer.ejs') %>

@@ -8,23 +8,23 @@
     
     <h1><%= titulo %></h1>
    
-    <div class="flexContainer">
+    
        
             <article>
                 <h3><%= noticias.titulo %></h3>
                 <p>CREADA POR: <a href="/creadapor/<%= noticias.creador %>/<%= noticias.nombrecreador %>" class="btnTabla"><%= noticias.nombrecreador %></a> el <%= noticias.fecha %></p>
                 <p class="parrafoLargo"><%= noticias.noticia %></p>
                 <div>
-                    <figure>
+                    
                        
-                        <img src="<%= noticias.imagensrc%>" alt="">
-                    </figure>
+                        <img src="/<%= noticias.imagensrc%>" alt="">
+                  
                 </div>
                 
                 
               
             </article>
       
-    </div>
+    
 </main>
 <%- include ('templates/footer.ejs') %>
